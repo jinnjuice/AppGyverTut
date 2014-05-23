@@ -1,0 +1,71 @@
+<div class="padding">
+
+<h1>Hooray!</h1>
+
+<p>Now, this page is a Steroids-style <em>resource</em>. It is generated from two files by the Steroids CLI: <br>
+  <br>
+  <code><small>app/views/steroidsTutorial/index.html</small></code><br>
+  <br>
+  is wrapped inside<br>
+  <br>
+  <code><small>app/views/layouts/steroidsTutorial.html</small></code><br>
+  <br>
+  The result is a single HTML file, which you can find at<br>
+  <br>
+  <code><small>dist/views/steroidsTutorial/index.html</small></code><br>
+</p>
+
+<p>When you run <code>$ steroids connect</code> (or press enter to update), layouts are applied in the above fashion to all applicable HTML files in the <code>app/views/</code> folder.</p>
+
+<p>After this, the <code>www/</code> and <code>app/</code> folders are combined into the <code>dist/</code> folder. The contents of the <code>dist/</code> folder are then pushed to connected devices.</p>
+
+<h2>Tabs</h2>
+
+<p>You also enabled tabs by uncommenting the lines in <code>config/application.coffee</code>.</p>
+
+<p>The <strong>Welcome</strong> tab now shows our previous <code>www/index.html</code> document, and the <strong>Internet</strong> tab shows Google's front page.</p>
+
+<h2>Localhost</h2>
+
+<p>In addition, this page is served from <code>http://localhost</code> (instead of via the <code>file://</code> protocol), which is part of our secret sauce.</p>
+
+<p>One instant benefit of localhost is that if you look at the <code><small>app/views/layouts/steroidsTutorial.html</small></code> file, you'll notice that we don't have to use explicit relative paths. We can always use <code>/stylesheets/applcation.css</code> instead of <code>../../stylesheets/application.css</code>. The same applies for images and other assets.</p>
+
+<p>We can also tell that you are currently viewing this document on an <em>Android device</em>. How do we know?</p>
+
+<p>Instead of relying on JavaScript to detect the user agent, there are two nearly-identical versions of the <code><small>app/views/steroidsTutorial/index.html</small></code> file: a regular one and <code>index.android.html</code>. When serving your app from localhost, Steroids automatically serves the correct file based on your platform.</p>
+
+<h2>Excercise 1</h2>
+
+<p>Modify the <code>index.html</code> file. As you can see, changes there do not affect your app on Android devices.
+
+<h2>Then</h2>
+
+<p>Now, let's dig deeper by opening an another document:</p>
+
+
+</div>
+
+<ul class="list">
+  <li onClick="openShow()" class="item item-icon-right">
+      To the next document!
+      <i class="icon ion-ios7-arrow-right"></i>
+    </li>
+  </ul>
+</div>
+
+<script>
+  // To inline JavaScript here is suboptimal and only used in this tutorial.
+  // The Steroids.js API documentation is at http://docs.appgyver.com
+
+  steroids.view.navigationBar.show("PhoneGap on Steroids")
+
+  // In the next part of this tutorial we learn how to do this properly with external JavaScript files
+
+  function openShow() {
+    var otherView = new steroids.views.WebView("/views/steroidsTutorial/show.html");
+    steroids.layers.push(otherView);
+  }
+
+
+</script>
